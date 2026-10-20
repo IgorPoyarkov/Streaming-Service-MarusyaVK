@@ -1,0 +1,234 @@
+.auth-modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  z-index: 12;
+  background-color: $color-white-50;
+
+  padding: 64px 40px;
+
+  @include vp-375 {
+    padding: 0 20px;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 420px;
+    min-height: 450px;
+    max-height: 710px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px 40px;
+    gap: 40px;
+    opacity: 1;
+    z-index: 12;
+
+    background-color: $color-white;
+    border-radius: 24px;
+
+    @include vp-375 {
+      padding: 50px 20px 32px;
+    }
+  }
+
+  &__form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 11px 0;
+    align-items: center;
+
+    @include vp-375 {
+      gap: 10px 0;
+    }
+  }
+
+  &__logo {
+    width: 160px;
+    height: 66px;
+
+    &-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include vp-375 {
+      width: 130px;
+      height: 60px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 12px 0;
+    padding: 0;
+  }
+
+  &__text {
+    display: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 11px;
+  }
+
+  &__closs {
+    position: absolute;
+    top: -2px;
+    right: -72px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      border: 1px solid $color-black;
+      width: 26.03px;
+
+      transform: translateX(-50%) rotate(-45deg);
+    }
+
+    &::before {
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    @include vp-375 {
+      top: 8px;
+      right: 8px;
+    }
+  }
+
+  &__action {
+    width: 100%;
+    background-color: $color-cornflower-blue;
+    color: $color-white;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+
+    &--opposite {
+      background-color: $color-white;
+      border: none;
+      color: $color-black;
+    }
+
+    @include vp-375 {
+      border-color: transparent;
+    }
+  }
+
+  &--closs {
+    display: none;
+  }
+
+  &--login {
+    .auth-modal__wrapper {
+      height: 456px;
+      margin: auto;
+
+      @include vp-375 {
+        height: 410px;
+        max-height: initial;
+        min-height: initial;
+      }
+    }
+
+    .auth-modal__logo {
+      margin: 0 0 16px;
+      @include vp-375 {
+        margin: 0 0 6px;
+      }
+    }
+
+    .custom-input:not(:has(~ .custom-input)) {
+      margin: 0 0 10px;
+    }
+  }
+
+  &--register {
+    .auth-modal__form {
+      gap: 10.45px 0;
+    }
+    .auth-modal__wrapper {
+      margin: auto;
+
+      @include vp-375 {
+        max-height: initial;
+        min-height: initial;
+        height: 670px;
+      }
+    }
+
+    .auth-modal__logo {
+      margin: 0 0 16px;
+      width: 136px;
+      @include vp-375 {
+        margin: 0 0 10px;
+      }
+    }
+
+    .custom-input:not(:has(~ .custom-input)) {
+      margin: 0 0 10px;
+    }
+
+    .auth-modal__title {
+      margin: 0 0 16px;
+    }
+  }
+
+  &--success {
+    .auth-modal {
+      &__wrapper {
+        max-height: initial;
+        min-height: initial;
+        height: 382px;
+        margin: auto;
+
+        @include vp-375 {
+          height: 410px;
+          max-height: initial;
+          min-height: initial;
+        }
+      }
+
+      &__form {
+        gap: 19.5px;
+      }
+
+      &__fields,
+      &__action--opposite {
+        display: none;
+      }
+
+      &__logo {
+        width: 132px;
+        margin: 0 0 6px;
+      }
+
+      &__text {
+        display: flex;
+      }
+    }
+  }
+}

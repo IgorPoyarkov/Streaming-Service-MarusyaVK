@@ -1,0 +1,139 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  gap: 71px;
+  padding: 36px 0 0 6px;
+
+  @include vp-375 {
+    padding: 22px 0 160px;
+    gap: 46px;
+  }
+
+  &-title {
+    margin: 0;
+    padding: 0;
+
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+
+    color: $color-white;
+
+    @include vp-375 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+
+    li:first-child {
+      .account-icon {
+        color: $color-mine-shaft;
+        stroke: $color-white;
+        stroke-width: 1.5px;
+      }
+    }
+
+    @include vp-375 {
+      gap: 30px;
+
+      li:first-child {
+        .account-icon {
+          width: 20px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+    max-height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    &--active {
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        border: 1.5px solid $color-heliotrope;
+        bottom: -7px;
+        transform: translateY(0);
+        transition: transform $transition-300;
+      }
+
+      &:hover,
+      &:focus-visible {
+        &::after {
+          transform: translateY(120%);
+        }
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      .account-list li:first-child & .account-icon {
+        stroke: $color-melrose;
+        color: transparent;
+      }
+
+      .account-list li:not(:first-child) & .account-icon {
+        color: $color-melrose;
+      }
+
+      .account-link {
+        color: $color-melrose;
+      }
+    }
+  }
+
+  &-icon {
+    color: $color-white;
+    width: 24px;
+    height: 24px;
+    transition:
+      color $transition-300,
+      stroke $transition-300;
+
+    @include vp-375 {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &-link {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+
+    color: $color-white;
+    transition: color $transition-300;
+
+    @include vp-375 {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+      @include vp-375 {
+        display: flex;
+      }
+    }
+  }
+
+  &-content .user-info {
+    @include vp-375 {
+      margin: 0 0 40px;
+    }
+  }
+}

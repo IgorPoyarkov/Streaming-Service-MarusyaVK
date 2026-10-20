@@ -1,0 +1,131 @@
+.popular-movies {
+  display: flex;
+  flex-direction: column;
+  padding: 37px 0 124px 6px;
+  gap: 64px;
+
+  @include vp-375 {
+    padding: 55px 0 0;
+    gap: 38px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+
+    color: $color-white;
+
+    @include vp-375 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 64px 30px;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+
+    counter-reset: movie-rank;
+
+    @include vp-375 {
+      flex-wrap: nowrap;
+      justify-content: start;
+      gap: 40px;
+      overflow-x: auto;
+      padding: 80px 16px;
+      margin: -80px -16px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+    }
+  }
+
+  &__item {
+    width: calc(20% - 30px);
+    box-shadow: 0px 0px 80px $color-white-33;
+    border-radius: 16px;
+
+    position: relative;
+    counter-increment: movie-rank;
+    transform: scale(1);
+    transition: transform $transition-300;
+
+    &::before {
+      position: absolute;
+      content: counter(movie-rank);
+      top: -12px;
+      left: -12px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 24px;
+
+      width: 62px;
+      height: 48px;
+
+      background: $color-white;
+      border-radius: 50px;
+
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+
+      color: $color-blue-marguerite;
+      z-index: 12;
+    }
+
+    &:last-child {
+      &::before {
+        width: 76px;
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      animation: scale-bounce $transition-300 forwards;
+    }
+
+    @include vp-375 {
+      width: 224px;
+      height: 336px;
+      flex-shrink: 0;
+
+      &:hover {
+        animation: none;
+      }
+    }
+  }
+}
+
+@keyframes scale-bounce {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}

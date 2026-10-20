@@ -1,0 +1,12 @@
+
+@mixin vp-375 {
+  @media (max-width: $vp-mobile) {
+    @content;
+  }
+}
+
+@mixin vp-812 {
+  @media (max-width: 812px) and (orientation: landscape) {
+    @content;
+  }
+}

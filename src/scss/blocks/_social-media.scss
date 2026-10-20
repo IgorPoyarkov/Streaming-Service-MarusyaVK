@@ -1,0 +1,142 @@
+.social-media {
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    &:hover,
+    &:focus-visible {
+      .social-media__icon {
+        color: $color-cornflower-blue;
+      }
+    }
+    &--vk {
+      .social-media__icon {
+        width: 18.72px;
+        height: 10.08px;
+        color: $color-white;
+
+        @include vp-375 {
+          width: 15px;
+          height: 24px;
+        }
+      }
+
+      &:hover,
+      &:focus-visible {
+        .social-media__link {
+          background-color: $color-cornflower-blue;
+        }
+        .social-media__icon {
+          color: $color-white;
+        }
+      }
+    }
+
+    &--yotube {
+      .social-media__icon {
+        width: 15.36px;
+        height: 11.04px;
+
+        @include vp-375 {
+          width: 12px;
+          height: 24px;
+        }
+      }
+
+      &:hover,
+      &:focus-visible {
+        .social-media__icon {
+          color: $color-thunderbird;
+        }
+      }
+    }
+    &--ok {
+      .social-media__icon {
+        width: 10.65px;
+        height: 17.76px;
+        @include vp-375 {
+          width: 9px;
+          height: 24px;
+        }
+      }
+
+      &:hover,
+      &:focus-visible {
+        .social-media__icon {
+          color: $color-pirate-gold;
+        }
+      }
+    }
+    &--telegram {
+      .social-media__icon {
+        width: 16.45px;
+        height: 13.63px;
+        @include vp-375 {
+          width: 10px;
+          height: 24px;
+        }
+      }
+
+      &:hover,
+      &:focus-visible {
+        .social-media__icon {
+          color: $color-cornflower-blue;
+        }
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    background-color: transparent;
+    border-radius: 8px;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color $transition-300;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      border: 1px solid $color-white-80;
+      height: 100%;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-white;
+    }
+
+    @include vp-375 {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    color: $color-white-80;
+    transition: color $transition-300;
+  }
+}

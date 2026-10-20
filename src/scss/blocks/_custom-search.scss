@@ -1,0 +1,163 @@
+.custom-search {
+  display: flex;
+  position: relative;
+  width: 653px;
+
+  @include vp-375 {
+    width: 24px;
+    height: 24px;
+
+    .custom-search__icon {
+      color: $color-white;
+      left: 0;
+      pointer-events: none;
+    }
+
+    &:focus-within {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 12;
+
+      background-color: $color-white-iu-90;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 18px;
+
+      .custom-search__input {
+        position: relative;
+        background-color: $color-cape-cod;
+        padding: 12px 48px 12px 52px;
+        width: 100%;
+        height: 54px;
+        cursor: text;
+        border-radius: 8px;
+
+        &::placeholder {
+          opacity: 1;
+        }
+      }
+
+      .custom-search__icon {
+        position: absolute;
+        top: 44px;
+        transform: translateY(-50%);
+        left: 36px;
+        color: $color-white-50;
+        z-index: 14;
+      }
+
+      .custom-search__delete {
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 44px;
+        transform: translateY(-50%);
+        right: 28px;
+        width: 40px;
+        height: 40px;
+        z-index: 1000;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__input {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+    width: 100%;
+    margin: 0;
+    padding: 12px 16px 12px 52px;
+    background-color: $color-cape-cod;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+
+    @include vp-375 {
+      background-color: transparent;
+      padding: 0;
+      cursor: pointer;
+
+      &::placeholder {
+        opacity: 0;
+        transition: opacity $transition-300;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    width: 24px;
+    height: 24px;
+
+    color: $color-white-50;
+
+    @include vp-375 {
+      pointer-events: none;
+      color: $color-white;
+      left: 0;
+    }
+  }
+
+  &__delete {
+    position: absolute;
+    width: 52px;
+    height: 51px;
+    right: 0;
+    top: 50%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+
+    transition: opacity $transition-300;
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: $color-white-50;
+      width: 18px;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @include vp-375 {
+      opacity: 0;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &--open {
+    .custom-search__delete {
+      opacity: 1;
+    }
+
+    .custom-search__delete {
+      @include vp-375 {
+        display: flex;
+      }
+    }
+  }
+}

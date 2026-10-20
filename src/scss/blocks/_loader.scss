@@ -1,0 +1,339 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+
+  &-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 12px;
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: calc(var(--size-loader) * 1px);
+    height: calc(var(--size-loader) * 1px);
+    transform: scale(1) rotate(0deg);
+    transform-origin: center center;
+
+    opacity: 0;
+    background-color: $color-cornflower-blue;
+    box-shadow: 0 0
+      calc(calc(var(--size-loader) * 0.25px) / calc(var(--items-count)))
+      $color-melrose;
+
+    animation: loaderItemAmimation 3s $transition-300 infinite;
+
+    animation-delay: calc(var(--index) * 1.2s);
+
+
+  }
+
+  &-element {
+    position: relative;
+    display: flex;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    width: calc(calc(var(--size-loader) * 1px) / 4);
+    height: calc(calc(var(--size-loader) * 1px) / 4);
+    transform: scale(1);
+    background-color: $color-black-40;
+    z-index: 12;
+
+    transform-origin: center center;
+
+    animation: loaderElementAmimation 3s $transition-300 infinite;
+    animation-delay: calc(var(--index) * 1.2s);
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      border: 2px solid $color-fiord;
+      width: 150%;
+      height: 150%;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 12;
+      animation: loaderPsevdoElementAmimation 3s $transition-300 infinite;
+      animation-delay: calc(var(--index) * 1.2s);
+    }
+    &::after {
+      width: 150%;
+      height: 150%;
+      top: -100%;
+      left: -100%;
+      transform: translate(50%, 50%);
+    }
+  }
+
+  &--scroll {
+    position: relative;
+    width: 100%;
+    height: 5vh;
+    border-radius: 12px;
+    border: 1px solid $color-melrose;
+    background-color: $color-cape-cod-50;
+    box-shadow: inset 0 0
+      calc(calc(var(--size-loader) * 0.45px) / calc(var(--items-count)))
+      $color-melrose;
+
+    animation: loaderScrollAmimation $transition-300 infinite;
+
+    .loader-item {
+      display: none;
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      border: 2px solid transparent;
+      border-radius: 12px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50%;
+      height: 0%;
+      background-color: $color-cornflower-blue;
+
+      box-shadow: inset 0 0
+        calc(calc(var(--size-loader) * 0.2px) / calc(var(--items-count)))
+        $color-white;
+
+      animation: loaderPsevdoScrollAmimation $transition-300 infinite;
+    }
+  }
+}
+
+@keyframes loaderItemAmimation {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: scale(0.6) rotate(-90deg);
+    opacity: 0.4;
+  }
+  20% {
+    transform: scale(0.4) rotate(0deg);
+    opacity: 0.5;
+  }
+  25% {
+    transform: scale(1) rotate(180deg);
+    opacity: 0.6;
+  }
+  30% {
+    transform: scale(0.6) rotate(90deg);
+    opacity: 0.7;
+  }
+
+  40% {
+    transform: scale(0.8) rotate(180deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(0.8) rotate(180deg);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(0.6) rotate(90deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: scale(1) rotate(180deg);
+
+    opacity: 0.6;
+  }
+  80% {
+    transform: scale(0.4) rotate(0deg);
+
+    opacity: 0.5;
+  }
+
+  90% {
+    transform: scale(0.6) rotate(-90deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes loaderElementAmimation {
+  0% {
+    transform: scale(1);
+    background-color: $color-white-25;
+  }
+  10% {
+    transform: scale(1.2);
+    background-color: $color-white-33;
+  }
+  20% {
+    transform: scale(1);
+    background-color: $color-white-40;
+  }
+  25% {
+    transform: scale(1.2);
+
+    background-color: $color-white-50;
+  }
+  30% {
+    transform: scale(1);
+    background-color: $color-white-70;
+  }
+
+  40% {
+    transform: scale(2);
+    background-color: $color-white-80;
+  }
+  50% {
+    transform: scale(4);
+    background-color: $color-white-25;
+  }
+
+  60% {
+    transform: scale(2);
+    background-color: $color-white-80;
+  }
+  70% {
+    transform: scale(1);
+    background-color: $color-white-70;
+  }
+  75% {
+    transform: scale(1.2);
+
+    background-color: $color-white-50;
+  }
+  80% {
+    transform: scale(1);
+    background-color: $color-white-40;
+  }
+
+  90% {
+    transform: scale(1.2);
+    background-color: $color-white-33;
+  }
+  100% {
+    transform: scale(1);
+    background-color: $color-white-25;
+  }
+}
+
+@keyframes loaderPsevdoElementAmimation {
+  0% {
+    transform: scale(0);
+    background-color: $color-white-25;
+  }
+  10% {
+    transform: scale(0.2);
+    background-color: $color-white-33;
+  }
+  20% {
+    transform: scale(0.4);
+    background-color: $color-white-40;
+  }
+  25% {
+    transform: scale(0.5);
+    background-color: $color-white-50;
+  }
+  30% {
+    transform: scale(0.75);
+    background-color: $color-white-70;
+  }
+
+  40% {
+    transform: scale(0.01);
+    background-color: $color-white-80;
+  }
+  50% {
+    transform: scale(0);
+    background-color: $color-white;
+  }
+
+  60% {
+    transform: scale(0.01);
+    background-color: $color-white-80;
+  }
+  70% {
+    transform: scale(0.75);
+    background-color: $color-white-70;
+  }
+  75% {
+    transform: scale(0.5);
+    background-color: $color-white-50;
+  }
+  80% {
+    transform: scale(0.4);
+    background-color: $color-white-40;
+  }
+
+  90% {
+    transform: scale(0.2);
+    background-color: $color-white-33;
+  }
+  100% {
+    transform: scale(0);
+    background-color: $color-white-25;
+  }
+}
+
+@keyframes loaderScrollAmimation {
+  0% {
+    width: 20%;
+  }
+
+  50% {
+    width: 75%;
+  }
+
+  70% {
+    width: 50%;
+  }
+  90% {
+    width: 95%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+@keyframes loaderPsevdoScrollAmimation {
+  0% {
+    height: 10%;
+    width: 20%;
+  }
+
+  50% {
+    height: 35%;
+    width: 65%;
+  }
+
+  70% {
+    height: 25%;
+    width: 50%;
+  }
+  90% {
+    height: 45%;
+    width: 90%;
+  }
+  100% {
+    height: 50%;
+    width: 20%;
+  }
+}

@@ -1,0 +1,35 @@
+.genre-slider {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  &__value {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white-70;
+    text-align: center;
+    width: 80px;
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      opacity $transition-300,
+      transform $transition-300;
+
+    &--fade {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    @include vp-375 {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

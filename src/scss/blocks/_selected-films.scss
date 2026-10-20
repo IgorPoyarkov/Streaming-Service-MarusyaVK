@@ -1,0 +1,40 @@
+.selected-films {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    gap: 64px 40px;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @include vp-375 {
+      flex-wrap: nowrap;
+      justify-content: start;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 80px 20px;
+      margin: -80px -20px;
+    }
+  }
+
+  &__item {
+    width: calc((100% - 160px) / 5);
+    box-shadow: 0px 0px 80px $color-white-33;
+    border-radius: 16px;
+
+    @include vp-375 {
+      background-color: transparent;
+      width: 224px;
+      height: 334px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__loader {
+    padding: 20px 0;
+  }
+}

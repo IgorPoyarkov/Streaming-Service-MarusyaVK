@@ -1,0 +1,8 @@
+.main {
+  padding: 35px 0 0 0;
+  flex-grow: 1;
+  
+  @include vp-375 {
+    padding: 0;
+  }
+}

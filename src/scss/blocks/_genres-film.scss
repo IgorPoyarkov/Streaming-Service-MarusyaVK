@@ -1,0 +1,108 @@
+.genres-film {
+  display: flex;
+  flex-direction: column;
+  gap: 61px;
+
+  padding: 0;
+
+  @include vp-375 {
+    padding: 21px 0 0 0;
+    gap: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+
+    color: $color-white;
+
+    @include vp-375 {
+      margin: 0 0 15px;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0 0 160px;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 64px 40px;
+
+    @include vp-375 {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: start;
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 20px);
+    overflow: hidden;
+    max-height: 304px;
+
+    max-width: 290px;
+    height: 304px;
+
+    border: 1px solid $color-white-25;
+
+    box-shadow: 0px 0px 80px $color-white-33;
+    border-radius: 24px;
+
+    @include vp-375 {
+      width: 100%;
+      max-width: initial;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+
+    &:hover,
+    &:focus-visible {
+      .genres-film__name {
+        color: $color-melrose;
+      }
+    }
+  }
+
+  &__picture {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 220px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__name {
+    display: block;
+    padding: 22px 10px 30px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+
+    align-items: center;
+    text-align: center;
+
+    color: $color-white;
+    background-color: $color-white-iu;
+
+    transition: color $transition-300;
+  }
+}

@@ -1,0 +1,146 @@
+.drop-list {
+  position: absolute;
+  width: 100%;
+  max-width: 560px;
+  max-height: 476px;
+  top: 59px;
+  right: -2px;
+
+  display: none;
+
+  background: $color-cape-cod;
+  border-radius: 8px;
+
+  z-index: 12;
+
+  @include vp-375 {
+    max-width: initial;
+    min-width: initial;
+    left: 0;
+    top: 0;
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    @include vp-375 {
+      padding: 8px 18px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    padding: 19px 8px;
+    border: 1px solid $color-cape-cod;
+    border-radius: 6px;
+
+    &:hover,
+    &:focus-visible {
+      border: 1px solid $color-white-50;
+    }
+
+    @include vp-375 {
+      padding: 14px 16px 14px 0;
+    }
+  }
+
+  &__not-found {
+    display: none;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+    padding: 12px;
+
+    color: $color-heliotrope;
+
+    @include vp-375 {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 12px 48px 12px 52px;
+    }
+  }
+
+  &--not-found {
+    .drop-list__list {
+      display: none;
+    }
+    .drop-list__not-found {
+      display: block;
+    }
+  }
+
+  &--open {
+    display: flex;
+    flex-direction: column;
+
+    @include vp-375 {
+      & {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 80px;
+        width: auto;
+        max-width: none;
+        overflow: hidden;
+      }
+      .drop-list__list {
+        flex-direction: row;
+        gap: 62px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .profile-film {
+        &--drop {
+          grid-template-columns: 1fr;
+          gap: 8px;
+
+          .profile-film {
+            &__intelligence {
+              grid-row: 2;
+              grid-column: 1/-1;
+
+              &-list {
+                display: inline-flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+              }
+            }
+
+            &__title {
+              min-height: initial;
+              max-height: initial;
+              padding: 0;
+              grid-row: 3;
+              grid-column: 1/-1;
+            }
+            &__text {
+              display: none;
+            }
+            &__picture {
+              max-width: initial;
+              min-width: initial;
+              max-height: initial;
+              width: 160px;
+              height: 206px;
+              grid-row: 1;
+              grid-column: 1/-1;
+
+              &-img {
+                &::after {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
