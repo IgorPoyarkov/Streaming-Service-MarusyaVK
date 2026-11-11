@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CustomDropListToSearch from "./CustomDropListToSearch";
+import { asset } from "../../utils/asset";
 
 interface CustomSearchProps {}
 
@@ -44,7 +45,7 @@ const CustomSearch = ({}: CustomSearchProps) => {
         placeholder="Поиск"
       />
       <svg className="custom-search__icon">
-        <use href={"/sprite.svg#search-icon"} />
+        <use href={asset("/sprite.svg#search-icon")} />
       </svg>
 
       <button

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useMovieById } from "../../services/movies/movies.api";
 import ReactPlayer from "react-player";
+import { asset } from "../../utils/asset";
 
 interface WatchingVideoProps {}
 
@@ -74,12 +75,12 @@ const WatchingVideo = ({}: WatchingVideoProps) => {
         >
           <svg className="watching-video__icon">
             {isLoading ? (
-              <use href="/sprite.svg#loader-video__icon" />
+              <use href={asset("/sprite.svg#loader-video__icon")} />
             ) : isPause ? (
               isHovered ? (
-                <use href="/sprite.svg#play__icon" />
+                <use href={asset("/sprite.svg#play__icon")} />
               ) : (
-                <use href="/sprite.svg#pause__icon" />
+                <use href={asset("/sprite.svg#pause__icon")} />
               )
             ) : null}
           </svg>

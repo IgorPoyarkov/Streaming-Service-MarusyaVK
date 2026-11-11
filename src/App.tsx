@@ -31,36 +31,39 @@ const AppLayout = () => {
   );
 };
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      { path: "/", element: <HomePage /> },
-      { path: "/movie/:id", element: <MoviePage /> },
-      { path: "/movie/genres", element: <GenrePage /> },
-      { path: "/genres/:genre", element: <Genres /> },
-      {
-        path: "/account",
-        element: <Account />,
-        children: [
-          {
-            path: "",
-            element: <SelectedFilms />,
-          },
-          {
-            path: "selected",
-            element: <SelectedFilms />,
-          },
-          {
-            path: "userfield",
-            element: <UserInfo />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        { path: "/", element: <HomePage /> },
+        { path: "/movie/:id", element: <MoviePage /> },
+        { path: "/movie/genres", element: <GenrePage /> },
+        { path: "/genres/:genre", element: <Genres /> },
+        {
+          path: "/account",
+          element: <Account />,
+          children: [
+            {
+              path: "",
+              element: <SelectedFilms />,
+            },
+            {
+              path: "selected",
+              element: <SelectedFilms />,
+            },
+            {
+              path: "userfield",
+              element: <UserInfo />,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL },
+);
 
 function App() {
   return <RouterProvider router={router} />;

@@ -1,4 +1,5 @@
 import type { AuthFieldConfig } from "./auth.constants";
+import { asset } from "../../utils/asset";
 
 interface CustomInputAuthProps {
   field: AuthFieldConfig;
@@ -7,7 +8,7 @@ interface CustomInputAuthProps {
   isError?: boolean;
 }
 
-const sprite = "/sprite.svg";
+const sprite = asset("/sprite.svg");
 
 const CustomInputAuth = ({
   field,

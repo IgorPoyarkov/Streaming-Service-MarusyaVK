@@ -1,32 +1,68 @@
-# React + TypeScript + Vite
+# Маруся — онлайн-кинотеатр
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Каталог фильмов и сериалов: лента, карточки, страница фильма, авторизация, избранное,
+поиск, просмотр онлайн, адаптивный размер порции.
 
-Currently, two official plugins are available:
+**Демо:** [igorpoyarkov.github.io/Streaming-Service-MarusyaVK](https://igorpoyarkov.github.io/Streaming-Service-MarusyaVK/)
+**Бэкенд:** Skillbox Cinemaguide API (`cinemaguide.skillbox.cc`) — REST, авторизация
+через cookie-сессии (`credentials: "include"`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Возможности
 
-## React Compiler
+- авторизация через cookie-сессии (`credentials: "include"` — вторая модель
+  аутентификации в том же портфолио);
+- лента фильмов с адаптивным размером страницы (мобильные — 5, десктоп — 10);
+- флаг `device` входит в `queryKey` — при повороте экрана кэш прошлых порций
+  не пересылзуется с неправильным шагом, откуда не берутся дубли и пропуски;
+- эндпоинт избранного отдаёт весь массив без параметров страницы: пагинация
+  сделана на клиенте, но с сохранением контракта `useInfiniteQuery`, чтобы
+  компонент ленты не отличался от остальных;
+- после мутации состояние берётся из ответа сервера (`setQueryData`), а не
+  пересчитывается локально — иначе разошлось бы при параллельных вкладках.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Ключевые решения
 
-## Expanding the Oxlint configuration
+### 1. `useInfiniteQuery` с клиентской пагинацией
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Эндпоинт `/favorites` возвращает полный массив, сервер не поддерживает `page`/`limit`.
+Чтобы сохранить единый интерфейс `useInfiniteQuery`, пагинация реализована на клиенте
+через `slice` — это даёт тот же `getNextPageParam` / `pageParam` контракт, который
+используется в остальных компонентах ленты.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### 2. Динамический `queryKey` при повороте экрана
+
+Флаг `isMobile` из `useMovieUtils` входит в `queryKey` хука `useInfiniteMovies`.
+При смене ориентации/ширины экрана React Query создаёт новый ключ, не смешивая
+мобильные и десктопные данные — нет дублей и пропусков.
+
+### 3. `placeholderData` против «мерцания»
+
+Без `placeholderData` на смене страницы сетка схлопывается в лоадер. С ним —
+старые данные остаются, пока не пришли новые.
+
+## Структура
+
+```
+src/
+├── components/
+│   ├── Account/      избранные фильмы + профиль
+│   ├── AuthModal/    модальное окно входа/регистрации
+│   ├── CardFilm/     карточка фильма
+│   ├── Genres/       лента по жанрам
+│   ├── Header/       поиск, жанры, профиль
+│   ├── Main/         лента, топ-10, трейлер
+│   └── WatchingVideo/ плеер
+├── services/
+│   ├── movies/       movies.api.ts + movies.schema.ts
+│   └── users/        users.api.ts + users.schema.ts
+└── hooks/
+    └── useMovieUtils.ts  определение мобильного
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Сборка и запуск
+
+```bash
+npm install && npm run dev        # dev-сервер
+npm run build                     # production-сборка
+npm run preview                   # проверка production-бандла
+```

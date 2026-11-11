@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useInfiniteMovies } from "../../services/movies/movies.api";
 import CardFilm from "../CardFilm/CardFilm";
 import Loader from "../Loader/Loader";
+import { asset } from "../../utils/asset";
 
 interface GenresProps {}
 
@@ -40,7 +41,7 @@ const Genres = ({}: GenresProps) => {
     <div className="genre">
       <Link className="genre-link" to={"/movie/genres"}>
         <svg className="genre-icon">
-          <use href="/sprite.svg#genre__icon" />
+          <use href={asset("/sprite.svg#genre__icon")} />
         </svg>
 
         <h2 className="genre-title">

@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { asset } from "../../utils/asset";
 
 interface FooterProps {}
 
@@ -16,28 +17,28 @@ const Footer = ({}: FooterProps) => {
           <li className="social-media__item social-media__item--vk">
             <a className="social-media__link" href="#">
               <svg className="social-media__icon">
-                <use href={"/sprite.svg#social-vk__icon"} />
+                <use href={asset("/sprite.svg#social-vk__icon")} />
               </svg>
             </a>
           </li>
           <li className="social-media__item social-media__item--yotube">
             <a className="social-media__link" href="#">
               <svg className="social-media__icon">
-                <use href={"/sprite.svg#social-yotube__icon"} />
+                <use href={asset("/sprite.svg#social-yotube__icon")} />
               </svg>
             </a>
           </li>
           <li className="social-media__item social-media__item--ok">
             <a className="social-media__link" href="#">
               <svg className="social-media__icon">
-                <use href={"/sprite.svg#social-ok__icon"} />
+                <use href={asset("/sprite.svg#social-ok__icon")} />
               </svg>
             </a>
           </li>
           <li className="social-media__item social-media__item--telegram">
             <a className="social-media__link" href="#">
               <svg className="social-media__icon">
-                <use href={"/sprite.svg#social-telegram__icon"} />
+                <use href={asset("/sprite.svg#social-telegram__icon")} />
               </svg>
             </a>
           </li>

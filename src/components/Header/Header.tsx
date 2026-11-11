@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useProfileUser } from "../../services/users/users.api";
 import CustomSearch from "./CustomSearch";
+import { asset } from "../../utils/asset";
 
 interface HeaderProps {}
 
@@ -15,7 +16,7 @@ const Header = ({}: HeaderProps) => {
           <li className="header__item header__item--logo">
             <NavLink className="header__link" to="/">
               <svg className="header__icon header__icon--logo">
-                <use href="/sprite.svg#logo" />
+                <use href={asset("/sprite.svg#logo")} />
               </svg>
             </NavLink>
           </li>
@@ -40,7 +41,7 @@ const Header = ({}: HeaderProps) => {
             >
               <span className="header__text">Жанры</span>
               <svg className="header__icon">
-                <use href={"/sprite.svg#genre-icon"} />
+                <use href={asset("/sprite.svg#genre-icon")} />
               </svg>
             </NavLink>
           </li>
@@ -60,7 +61,7 @@ const Header = ({}: HeaderProps) => {
                 {isAuthorized ? `${profile?.name}` : "Войти"}
               </span>
               <svg className="header__icon">
-                <use href={"/sprite.svg#user__icon"} />
+                <use href={asset("/sprite.svg#user__icon")} />
               </svg>
             </NavLink>
           </li>

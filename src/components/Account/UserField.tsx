@@ -1,5 +1,6 @@
 import { useProfileUser } from "../../services/users/users.api";
 import Loader from "../Loader/Loader";
+import { asset } from "../../utils/asset";
 
 interface UserFieldProps {}
 
@@ -26,7 +27,7 @@ const UserField = ({}: UserFieldProps) => {
         <li className="user-field__item">
           <span className="user-field__cell user-field__abbreviation">
             <svg className="user-field__icon">
-              <use href={"/sprite.svg#custom-input__auth-icon--email"} />
+              <use href={asset("/sprite.svg#custom-input__auth-icon--email")} />
             </svg>
           </span>
           <span className="user-field__cell user-field__label">

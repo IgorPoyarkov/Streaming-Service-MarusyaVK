@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import CustomInputAuth from "./CustomInputAuth";
 import { authConfigMap } from "./auth.constants";
+import { asset } from "../../utils/asset";
 import {
   useLoginMutation,
   useRegisterMutation,
@@ -133,7 +134,7 @@ const AuthModal = () => {
         <form className="auth-modal__form" onSubmit={handleSubmitForm}>
           <div className="auth-modal__logo">
             <svg className="auth-modal__logo-icon">
-              <use href="/sprite.svg#logo" />
+              <use href={asset("/sprite.svg#logo")} />
             </svg>
           </div>
 

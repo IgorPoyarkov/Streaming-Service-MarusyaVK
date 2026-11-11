@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { accountConfig } from "./account.constants";
+import { asset } from "../../utils/asset";
 
 interface accountProps {}
 
@@ -20,7 +21,7 @@ const account = ({}: accountProps) => {
                 }
               >
                 <svg className="account-icon">
-                  <use href={`/sprite.svg#${field.icon}`} />
+                  <use href={asset("/sprite.svg#${field.icon}")} />
                 </svg>
                 <span className="account-link">{field.link}</span>
                 <span className="account-link account-link--mobile">

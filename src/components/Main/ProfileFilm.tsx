@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMovieUtils } from "../../hooks/useMovieUtils";
 import GenreSlider from "./GenreSlider";
 import Loader from "../Loader/Loader";
+import { asset } from "../../utils/asset";
 
 interface ProfileFilmProps {
   movie?: Movie;
@@ -96,7 +97,7 @@ const ProfileFilm = ({ movie, modifier = "" }: ProfileFilmProps) => {
           <li className="profile-film__intelligence-item">
             <div className="profile-film__intelligence-wrapper">
               <svg className="profile-film__intelligence-icon">
-                <use href={"/sprite.svg#star__icon"} />
+                <use href={asset("/sprite.svg#star__icon")} />
               </svg>
               <span
                 className={`profile-film__intelligence-detail profile-film__intelligence-detail--rating ${formatRating(film?.tmdbRating)} ${Number(film?.tmdbRating) === 10 ? "profile-film__intelligence-detail--rating-big" : ""}`}
@@ -170,7 +171,7 @@ const ProfileFilm = ({ movie, modifier = "" }: ProfileFilmProps) => {
                   disabled={addFavorite.isPending}
                 >
                   <svg className="profile-film__actions-icon">
-                    <use href={"/sprite.svg#little-heart__icon"} />
+                    <use href={asset("/sprite.svg#little-heart__icon")} />
                   </svg>
                 </button>
               </div>
@@ -194,7 +195,7 @@ const ProfileFilm = ({ movie, modifier = "" }: ProfileFilmProps) => {
                         : ""
                     }`}
                   >
-                    <use href={"/sprite.svg#reverse__icon"} />
+                    <use href={asset("/sprite.svg#reverse__icon")} />
                   </svg>
                 </button>
               </div>
